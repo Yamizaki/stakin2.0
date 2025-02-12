@@ -1,0 +1,8 @@
+Django==4.2
+celery==5.3.1        # Celery y Celery Beat están incluidos en este paquete
+redis==4.5.5         # Broker para Celery
+gunicorn==20.1.0     # Servidor WSGI para producción
+psycopg2-binary==2.9.6  # Controlador de PostgreSQL para Django
+django-celery-beat==2.5.0
+Pillow == 9.2.0
+freezegun==1.2.2
