@@ -14,13 +14,11 @@ def increment_account_balance():
     try:
         accounts = InvestmentAccount.objects.filter(is_active=True)
         for account in accounts:        
-            print("+"*20, account.current_balance)
             # Supongamos que `initial_amount` representa los fondos pendientes
             account.apply_daily_profit()
 
             # Creamos un registro de transaccion 
-            InvestmentTransaction.objects.create(investment_account=account, current_balance=account.current_balance, transaction_type="payment_return", amount=account.daily_return, date=now)
-            print("+"*20, account.current_balance)
+            InvestmentTransaction.objects.create(investment_account=account, commission_balance=account.commission_balance, transaction_type="payment_return", amount=account.daily_return, date=now)
     except Exception as e:
         logger.error(f"Error al procesar las cuentas: {e}")
     return(f"COMISIONES -Procesadas {accounts.count()} cuentas a las {now}")
