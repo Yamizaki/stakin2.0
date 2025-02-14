@@ -1,6 +1,17 @@
-<h1>Lista de Cuentas</h1>
-<ul>
-    {% for account in accounts %}
-        <li>{{ account.account_name }} - {{ account.investment_amount }} - {{ account.pending_amount}} - {{account.commission_balance}}</li>
-    {% endfor %}
-</ul>
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% tailwind_css %}
+    <title>Mi Proyecto</title>
+</head>
+<body>
+    <h1 class="text-3xl font-bold underline bg-indigo-400 text-red-500">
+        ¡Hola, Tailwind en Django con Docker!
+    </h1>
+</body>
+</html>
+
+

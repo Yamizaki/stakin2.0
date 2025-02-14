@@ -1,0 +1,11 @@
+{% load tailwind_tags   %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    {% tailwind_css %}
+</head>
+<body>
+    {% block content %}{% endblock %}
+</body>
+</html>

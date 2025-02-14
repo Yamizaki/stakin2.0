@@ -38,7 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Users', 'Investment', 'django_celery_beat',
+    'tailwind',
+    'theme',  # Nombre de la app para Tailwind
+    # 'django_browser_reload',  # Opcional para autorecarga en desarrollo
 ]
+TAILWIND_APP_NAME = 'theme'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
