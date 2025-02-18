@@ -18,8 +18,7 @@ env/
 db.sqlite3
 *.sqlite3
 /media/
-/staticfiles/
-static/
+
 *.log
 
 # IDEs y editores

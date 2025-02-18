@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Tesla",
+    "Symbol": "TSLA",
+    "LogoURL": "https://cdn.profit.com/logo/stocks/TSLA.US.png",
+    "current_price": 358.98
+  },
+  {
+    "name": "Apple",
+    "Symbol": "AAPL",
+    "LogoURL": "https://cdn.profit.com/logo/stocks/AAPL.US.png",
+    "current_price": 243.16
+  },
+  {
+    "name": "Google",
+    "Symbol": "GOOGL",
+    "LogoURL": "https://cdn.profit.com/logo/stocks/GOOGL.US.png",
+    "current_price": 184.20
+  }
+]

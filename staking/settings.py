@@ -70,6 +70,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "staking.context_processors.fetch_and_save_data",
+                "staking.context_processors.fetch_and_save_data_stocks"
             ],
         },
     },
@@ -178,3 +179,12 @@ COMPRESS_ROOT = BASE_DIR / "static"
 COMPRESS_ENABLED = True
 
 STATICFILES_FINDERS = ("compressor.finders.CompressorFinder",)
+
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",  # Puedes usar Redis o Memcached
+        "LOCATION": "unique-snowflake",
+        "TIMEOUT": 600,  # 10 minutos
+    }
+}

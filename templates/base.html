@@ -16,9 +16,9 @@
     {% livereload_script %}
   </head>
 
-  <body class="bg-green-500">
-    <div class="flex">
-      <aside class="background__aside h-screen w-[15%] ms-5 my-5 rounded-lg">
+  <body class="bg-slate-700">
+    <div class=" flex justify-center items-center" style="height: 100vh;">
+      <aside class="bg-zinc-300 w-[15%] h-[85%] rounded-lg ">
         <div class="flex justify-center items-center align-middle">GINO STAKING</div>
         <div>
           <ul class="flex flex-col mt-20">
@@ -33,55 +33,55 @@
           </ul>
         </div>
       </aside>
+
+     <main style="width: 63vw;">
       {% block content %}
 
       {% endblock %}
-      {{data_crypto}}
-      <aside class="w-[12%] ms-5 my-5 flex flex-col gap-5">
-        <div class="bg-orange-300 rounded-lg">
+     </main>
+      
+     <aside class=" flex flex-col gap-5  w-[15%]">
+        <div class="bg-zinc-300 rounded-lg py-4">
+          <p class="text-center text-3xl font-semibold">Criptomonedas</p>
+          <ul class="">
+
+            {% for crypto in data_crypto %}
+              <div class="">
+                <li class="flex gap-5 hover:shadow-md">
+                    <img src="{{ crypto.image }}" class="w-10 h-auto"/>
+                  <div class="gap-5 flex justify-center items-center">
+                    <div>
+                      <p class="font-semibold text-2xl">{{ crypto.name }}</p>
+                    <p>{{ crypto.price_change_percentage_24h }}%</p>
+                    </div>
+
+                      <p class="text-end">${{ crypto.current_price }}</p>
+
+                  </div>
+                </li>
+              </div>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="bg-zinc-200 rounded-lg p-4">
           <ul>
-            <li>Criptomonedas</li>
+            <p class="text-center text-3xl font-semibold">Mercado Acciones</p>
+            {% for stock in data_stocks %}
             <div class="">
               <li class="flex gap-5 hover:shadow-md">
-                <div>
-                    icono
-                </div>
-                <div class=" gap-5">
-                    <p>Bitcoin</p>
-                    <div class="flex gap-5">
-                        <p>$ 100000</p>
-                    <p>50%</p>
-                    </div>
+                  <img src="{{ stock.LogoURL }}" class="w-10 h-auto"/>
+                <div class="gap-5 flex justify-center items-center">
+                  <div>
+                    <p class="font-semibold text-2xl">{{ stock.name }}</p>
+                  </div>
+
+                    <p class="text-end">${{ stock.current_price }}</p>
+
                 </div>
               </li>
-              <li class=" hover:shadow-md">Ethereum 📊</li>
-              <li class=" hover:shadow-md">Theter 💸</li>
-              <li class=" hover:shadow-md">Tron 📋</li>
             </div>
-          </ul>
-        </div>
-
-        <div class="bg-zinc-200 rounded-lg">
-          <ul>
-            <li>Mercado bienes</li>
-            <div class="">
-              <li class="hover:shadow-md">Oro 👤</li>
-              <li class="hover:shadow-md">Petroleo 📊</li>
-              <li class="hover:shadow-md">Plata 💸</li>
-              <li class="hover:shadow-md">Cafe 📋</li>
-            </div>
-          </ul>
-        </div>
-
-        <div class="bg-zinc-200 rounded-lg">
-          <ul>
-            <li>Acciones</li>
-            <div class="">
-              <li class="hover:shadow-md">Tesla 👤</li>
-              <li class="hover:shadow-md">Apple 📊</li>
-              <li class="hover:shadow-md">Nvidia 💸</li>
-              <li class="hover:shadow-md">AMD 📋</li>
-            </div>
+          {% endfor %}
           </ul>
         </div>
       </aside>
