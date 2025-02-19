@@ -14,11 +14,9 @@ colorama==0.4.6
 cron-descriptor==1.4.5
 Django==4.2
 django-appconf==1.1.0
-django-browser-reload==1.18.0
 django-celery-beat==2.5.0
 django-compressor==4.5.1
 django-livereload-server==0.5.1
-django-tailwind==3.8.0
 django-timezone-field==7.1
 freezegun==1.2.2
 gunicorn==20.1.0

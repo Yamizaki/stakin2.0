@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&display=swap");
+:root {
+  --color-background: #0a0f1f; /* Azul oscuro profundo, sensación de interfaz futurista */
+  --color-text: #dae1e2; /* Cian neón brillante, típico de pantallas holográficas */
+  --left-section: rgba(
+    163,
+    154,
+    121,
+    0.17
+  ); /* Magenta neón, vibrante y llamativo */
+  --right-section: rgba(
+    163,
+    154,
+    121,
+    0.17
+  ); /* Verde neón translúcido, estilo matrix */
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Exo 2", serif;
+}
+body {
+  font-family: "Manrope", serif;
+  color: var(--color-text);
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-background);
+}
+aside {
+  min-height: 90vh;
+  width: 15vw;
+  border-radius: 15px;
+}
+.left-section {
+  background-color: var(--left-section);
+  min-height: 90vh;
+  width: 15vw;
+}
+
+aside h1 {
+  color: var(--color-secondary);
+  text-align: center;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style-type: none;
+  transition: all 0.8s ease;
+  padding: 15px 50px 15px 50px;
+}
+
+li:hover {
+  box-shadow: inset;
+  box-shadow: -1px 5px 10px -1px rgba(0, 0, 0, 0.75);
+}
+
+.right-section {
+  padding: 30px;
+  background-color: var(--right-section);
+  min-height: 90vh;
+  border-radius: 15px;
+}
+
+main {
+  width: 60vw;
+}
+
+@keyframes move {
+  100% {
+    transform: translate3d(0, 0, 1px) rotate(360deg);
+  }
+}
+
+.background {
+  width: 100vw;
+  min-height: 100vh;
+  top: 0;
+  left: 0;
+  background: #180e26;
+  overflow-x: hidden;
+}
+
+.background span {
+  width: 10vmin;
+  min-height: 10vmin;
+  border-radius: 10vmin;
+  backface-visibility: hidden;
+  position: absolute;
+  animation: move;
+  animation-duration: 36;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.background span:nth-child(0) {
+  color: #9070c7;
+  top: 34%;
+  left: 48%;
+  animation-duration: 74s;
+  animation-delay: -69s;
+  transform-origin: 2vw 13vh;
+  box-shadow: -20vmin 0 2.6816959865626506vmin currentColor;
+}
+.background span:nth-child(1) {
+  color: #b5a6a6;
+  top: 81%;
+  left: 43%;
+  animation-duration: 78s;
+  animation-delay: -47s;
+  transform-origin: 1vw 10vh;
+  box-shadow: 20vmin 0 3.401138518142081vmin currentColor;
+}
+.background span:nth-child(2) {
+  color: #b5a6a6;
+  top: 48%;
+  left: 72%;
+  animation-duration: 52s;
+  animation-delay: -85s;
+  transform-origin: -18vw 12vh;
+  box-shadow: 20vmin 0 3.4411969574536623vmin currentColor;
+}
+.background span:nth-child(3) {
+  color: #aab5a6;
+  top: 40%;
+  left: 16%;
+  animation-duration: 58s;
+  animation-delay: -105s;
+  transform-origin: -21vw 5vh;
+  box-shadow: 20vmin 0 3.264750872157256vmin currentColor;
+}
+.background span:nth-child(4) {
+  color: #9070c7;
+  top: 7%;
+  left: 63%;
+  animation-duration: 66s;
+  animation-delay: -5s;
+  transform-origin: 19vw -6vh;
+  box-shadow: -20vmin 0 2.691801750828747vmin currentColor;
+}
+.background span:nth-child(5) {
+  color: #9070c7;
+  top: 16%;
+  left: 97%;
+  animation-duration: 125s;
+  animation-delay: -101s;
+  transform-origin: 18vw -11vh;
+  box-shadow: -20vmin 0 3.149086145316771vmin currentColor;
+}
+.container-accounts {
+  background-color: rgba(240, 248, 255, 0.054);
+  padding: 5px 30px 5px 30px;
+  width: fit-content;
+  margin: auto;
+  border-radius: 15px;
+  backdrop-filter: blur(10px); /* Efecto difuminado */
+  -webkit-backdrop-filter: blur(10px); /* Compatibilidad con Safari */
+  border: .5px solid rgba(255, 255, 255, 0.077); /* Borde semi-transparente */
+}

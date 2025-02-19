@@ -1,12 +1,88 @@
-{% extends "base.html" %}
-
+{% extends 'base.html' %}
+{% load static %}
+{% block css_special %}
+  <link rel="stylesheet" href="{% static 'css/uiverse.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/button.css' %}" />
+{% endblock %}
 {% block content %}
-    {% if  accounts %}
-        {% for account in accounts  %}
-        {{account.account_name}}
-    
-        {% endfor %}
-    {% else %}
-        <h1>No hay accs</h1>
-    {% endif %}
-{% endblock content %}
+
+  {% if accounts %}
+    {% for account in accounts %}
+      <section style="margin:20px 5px;">
+        <div class="container-accounts">
+            <h1 style="text-align: center;">{{ account.account_name }}</h1>
+        <div style="display:flex; justify-content: center; gap:25px; flex-wrap: wrap;">
+          <div class="outer">
+            <div class="dot"></div>
+            <div class="card">
+              <div class="text">{{ account.investment_amount }}$</div>
+              <h3>Invertido</h3>
+              <div class="line topl"></div>
+              <div class="line leftl"></div>
+              <div class="line bottoml"></div>
+              <div class="line rightl"></div>
+            </div>
+          </div>
+          <div class="outer">
+            <div class="dot"></div>
+            <div class="card">
+              <div class="text">{{ account.commission_balance }}$</div>
+              <h3>Rendimientos</h3>
+              <div class="line topl"></div>
+              <div class="line leftl"></div>
+              <div class="line bottoml"></div>
+              <div class="line rightl"></div>
+            </div>
+          </div>
+          <div class="outer">
+            <div class="dot"></div>
+            <div class="card">
+              <div class="text">{{ account.total_amount }}$</div>
+              <h3>Total</h3>
+              <div class="line topl"></div>
+              <div class="line leftl"></div>
+              <div class="line bottoml"></div>
+              <div class="line rightl"></div>
+            </div>
+          </div>
+        </div>
+        <!-- From Uiverse.io by adamgiebl -->
+        <div style="display: flex; justify-content: center; gap:25px; margin: 20px;">
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-credit-card-pay">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M12 19h-6a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v4.5" />
+              <path d="M3 10h18" />
+              <path d="M16 19h6" />
+              <path d="M19 16l3 3l-3 3" />
+              <path d="M7.005 15h.005" />
+              <path d="M11 15h2" />
+            </svg>
+            <p>Depositar</p>
+          </button>
+
+          <button class="cancel">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-calendar-sad">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12zm12 -4v4m-8 -4v4m-4 4h16m-9.995 3h.01m3.99 0h.01" />
+              <path d="M10 18a3.5 3.5 0 0 1 4 0" />
+            </svg>
+            <p>Retirar</p>
+          </button>
+        </div>
+        </div>
+      </section>
+    {% endfor %}
+    <div style="width: 100%;">
+        <button class="agregar-cuenta" style="margin: auto;" >
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-circle-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4.929 4.929a10 10 0 1 1 14.141 14.141a10 10 0 0 1 -14.14 -14.14zm8.071 4.071a1 1 0 1 0 -2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 1 0 2 0v-2h2a1 1 0 1 0 0 -2h-2v-2z" /></svg>
+            <p>Nueva cuenta</p></button>
+    </div>
+  {% else %}
+    <!-- From Uiverse.io by mrhyddenn -->
+    <!-- From Uiverse.io by Spacious74 -->
+    <div style="width: 100%;">
+        <button class="agregar-cuenta" style="margin: auto;" ><h4>Nueva cuenta</h4></button>
+    </div>
+  {% endif %}
+{% endblock %}

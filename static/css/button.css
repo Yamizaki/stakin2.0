@@ -1,0 +1,85 @@
+/* From Uiverse.io by adamgiebl */ 
+button {
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 17px;
+    color: white;
+    background: #ad5389;
+    background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    border: none;
+    letter-spacing: 0.05em;
+    border-radius: 16px;
+    padding: 0px 10px;
+  }
+  
+  button svg {
+    margin-right: 3px;
+    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  
+  button p {
+    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  
+  button:hover svg {
+    transform: translateX(5px) rotate(-10deg);
+  }
+  
+  button:hover p {
+    transform: translateX(7px);
+  }
+  
+  .cancel {
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 17px;
+    color: white;
+    background: #ad5389;
+    background: linear-gradient(to right, #8c1616, #c02942, #ff5733);
+
+    border: none;
+    letter-spacing: 0.05em;
+    border-radius: 16px;
+    padding: 0px 10px;
+  }
+  
+  .cancel svg {
+    margin-right: 3px;
+    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  
+  .cancel p {
+    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  
+  .cancel:hover svg {
+    transform: translateX(5px) rotate(-10deg);
+  }
+  
+  .cancel:hover p {
+    transform: translateX(7px);
+  }
+
+  .agregar-cuenta {
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 17px;
+    color: white;
+    background: #ad5389;
+    background: linear-gradient(to right, #11998e, #38ef7d);
+
+    border: none;
+    letter-spacing: 0.05em;
+    border-radius: 16px;
+    padding: 0px 10px;
+  }
+  

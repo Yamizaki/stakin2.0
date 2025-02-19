@@ -30,7 +30,6 @@ def fetch_and_save_data_stocks(requests):
         try:
             with open(ruta_archivo, 'r', encoding='utf-8') as archivo:
                 data = json.load(archivo)  # Carga el archivo JSON
-                print(data)
                 return {"data_stocks": data}
         except FileNotFoundError:
             print(f"Error: El archivo {ruta_archivo} no fue encontrado.")

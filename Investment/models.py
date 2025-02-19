@@ -22,6 +22,14 @@ class InvestmentAccount(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)  # Fecha de creación
     updated_at = models.DateTimeField(auto_now=True)  # Fecha de última actualización
 
+    def save(self, *args, **kwargs):
+        if self.investment_amount > Decimal('0.00'):
+            factor = Decimal('0.0005')  # Convertimos el float en Decimal
+            self.daily_return = (self.investment_amount * factor).quantize(Decimal('0.01'))  # Redondeo a 2 decimales
+        else:
+            self.daily_return = Decimal('0.00')
+
+        super().save(*args, **kwargs)
     def deposit(self, amount):
         """Registra un depósito y calcula la ganancia mensual y diaria"""
         if amount > 0:
@@ -37,13 +45,15 @@ class InvestmentAccount(models.Model):
             self.pending_deposit = False
             self.save()
             self.calculate_returns()  # Calcula rendimientos
+            
+    
 
-    def calculate_returns(self):
-        """Calcula automáticamente las ganancias diaria y mensual según el saldo"""
-        self.total_amount = self.investment_amount + self.commission_balance
-        self.daily_return = self.investment_amount * Decimal('0.005')  
-        self.monthly_return = self.daily_return * 30  # Aproximación al mes
-        self.save()
+    # def calculate_returns(self):
+    #     """Calcula automáticamente las ganancias diaria y mensual según el saldo"""
+    #     self.total_amount = self.investment_amount + self.commission_balance
+    #     self.daily_return = self.investment_amount * Decimal('0.005')  
+    #     self.monthly_return = self.daily_return * 30  # Aproximación al mes
+    #     self.save()
 
     def apply_daily_profit(self):
         """Añade la ganancia diaria al balance"""

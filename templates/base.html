@@ -1,4 +1,3 @@
-{% load compress %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
@@ -7,84 +6,83 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test</title>
-
-    {% compress css %}
-    <link rel="stylesheet" href="{% static 'src/output.css' %}" />
-    <link rel="stylesheet" href="{% static 'src/custom.css' %}" />
-    {% endcompress %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
+    {% block css_special %}
+    {% endblock %}
     {% load livereload_tags %}
     {% livereload_script %}
   </head>
 
-  <body class="bg-slate-700">
-    <div class=" flex justify-center items-center" style="height: 100vh;">
-      <aside class="bg-zinc-300 w-[15%] h-[85%] rounded-lg ">
-        <div class="flex justify-center items-center align-middle">GINO STAKING</div>
-        <div>
-          <ul class="flex flex-col mt-20">
-            <li class="hover:shadow-md">Perfil 👤</li>
-            <li class="hover:shadow-md">Cuentas 📊</li>
-            <li class="hover:shadow-md">Inversiones 💸</li>
-            <li class="hover:shadow-md">Detalles 📋</li>
-            <li class="hover:shadow-md">Negocios 💼</li>
-            <li class="hover:shadow-md">Dashboard 💻</li>
-            <li class="hover:shadow-md">Contacto 📱</li>
-            <li class="hover:shadow-md">Ayuda 📣</li>
-          </ul>
-        </div>
-      </aside>
+  <body class="background">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <aside class="left-section">
+      <h1>TITLE FOR APP</h1>
+      <div>
+        <ul>
+          <li>Perfil 👤</li>
+          <li>Cuentas 📊</li>
+          <li>Inversiones 💸</li>
+          <li>Detalles 📋</li>
+          <li>Negocios 💼</li>
+          <li>Dashboard 💻</li>
+          <li>Contacto 📱</li>
+          <li>Ayuda 📣</li>
+        </ul>
+      </div>
+    </aside>
 
-     <main style="width: 63vw;">
+    <main>
       {% block content %}
 
       {% endblock %}
-     </main>
-      
-     <aside class=" flex flex-col gap-5  w-[15%]">
-        <div class="bg-zinc-300 rounded-lg py-4">
-          <p class="text-center text-3xl font-semibold">Criptomonedas</p>
-          <ul class="">
+    </main>
 
-            {% for crypto in data_crypto %}
-              <div class="">
-                <li class="flex gap-5 hover:shadow-md">
-                    <img src="{{ crypto.image }}" class="w-10 h-auto"/>
-                  <div class="gap-5 flex justify-center items-center">
-                    <div>
-                      <p class="font-semibold text-2xl">{{ crypto.name }}</p>
-                    <p>{{ crypto.price_change_percentage_24h }}%</p>
-                    </div>
-
-                      <p class="text-end">${{ crypto.current_price }}</p>
-
-                  </div>
-                </li>
-              </div>
-            {% endfor %}
-          </ul>
-        </div>
-
-        <div class="bg-zinc-200 rounded-lg p-4">
-          <ul>
-            <p class="text-center text-3xl font-semibold">Mercado Acciones</p>
-            {% for stock in data_stocks %}
-            <div class="">
-              <li class="flex gap-5 hover:shadow-md">
-                  <img src="{{ stock.LogoURL }}" class="w-10 h-auto"/>
-                <div class="gap-5 flex justify-center items-center">
-                  <div>
-                    <p class="font-semibold text-2xl">{{ stock.name }}</p>
-                  </div>
-
-                    <p class="text-end">${{ stock.current_price }}</p>
-
+    <aside class="right-section">
+      <div>
+        <h1>Criptomonedas</h1>
+        {% for crypto in data_crypto %}
+          <div class="" style="">
+            <div style="display: flex; align-items: center; ">
+              <img src="{{ crypto.image }}" style="width: 20%; height: 20%; margin-right: 10px;" />
+              <div style="display: flex; gap:10px; align-items: center; justify-content: space-between;">
+                <div>
+                  <p style="font-weight: 800; font-size: 16px;">{{ crypto.name }}</p>
+                  {% if crypto.price_change_percentage_24h > 0 %}
+                    <p style="font-size: 13px; line-height:0px; color:greenyellow">{{ crypto.price_change_percentage_24h }}%</p>
+                  {% else %}
+                    <p style="font-size: 13px; line-height:0px; color: red;">{{ crypto.price_change_percentage_24h }}%</p>
+                  {% endif %}
                 </div>
-              </li>
+
+                <p style="text-align: end;">${{ crypto.current_price }}</p>
+              </div>
             </div>
-          {% endfor %}
-          </ul>
-        </div>
-      </aside>
-    </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div>
+        <h1>Mercado Acciones</h1>
+        {% for stock in data_stocks %}
+          <div class="">
+            <div style="display: flex; align-items: center; gap:10px">
+              <img src="{{ stock.LogoURL }}" style="width: 20%; height: 20%;" />
+              <div style="display: flex; gap:25px; align-items: center;">
+                <div>
+                  <p style="font-weight: 800; font-size: 20px;">{{ stock.name }}</p>
+                </div>
+
+                <p>${{ stock.current_price }}</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </aside>
   </body>
 </html>
