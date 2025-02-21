@@ -35,6 +35,12 @@ body {
   align-items: center;
   background-color: var(--color-background);
 }
+main{
+  overflow-y: scroll;
+  max-height: 80vh;
+  min-height: 80vh;
+  margin: 20px 40px;
+}
 aside {
   min-height: 90vh;
   width: 15vw;
@@ -80,6 +86,12 @@ main {
   100% {
     transform: translate3d(0, 0, 1px) rotate(360deg);
   }
+}
+.hidden{
+  display: none;
+}
+.block{
+  display: block;
 }
 
 .background {
@@ -166,4 +178,96 @@ main {
   backdrop-filter: blur(10px); /* Efecto difuminado */
   -webkit-backdrop-filter: blur(10px); /* Compatibilidad con Safari */
   border: .5px solid rgba(255, 255, 255, 0.077); /* Borde semi-transparente */
+}
+
+
+.modal-add-account-form {
+  display: flex;
+  flex-direction: column;
+  gap:5px;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  margin:auto;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  margin-top: 10%;
+  padding: 50px;
+  border-radius: 12px;
+  width: 300px;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  color: #dae1e2;
+}
+
+/* Estilos para el input */
+.modal-add-account-form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 5px;
+  color: #dae1e2;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+
+
+/* Botón con efecto neón */
+.modal-add-account-form button {
+  padding: 10px;
+  background: linear-gradient(45deg, #00feba, #5b548a);
+  border: none;
+  border-radius: 5px;
+  color: #0A0F1F;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0px 0px 10px rgba(0, 255, 140, 0.5);
+  margin-top: 10px;
+}
+
+.modal-add-account-form button:hover {
+  box-shadow: 0px 0px 20px rgba(0, 255, 140, 1);
+}
+/* Estilo general del scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 15, 15, 0.9); /* Negro profundo */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff0000, #ff7300); /* Degradado rojo-naranja */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff7300, #ff0000);
+}
+
+.add-acc-abso{
+  position: absolute;
+  top: 0;
+  right: 20px;
+
+}
+
+#modal-add-account{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.178);
+  z-index: 1;
 }

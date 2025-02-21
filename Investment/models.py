@@ -7,11 +7,11 @@ class InvestmentAccount(models.Model):
 
     # Campos básicos de la cuenta de inversión
     account_name = models.CharField(max_length=100, unique=True)  # Nombre de la cuenta
-    investment_amount = models.DecimalField(max_digits=15, decimal_places=2)  # Monto inicial
+    investment_amount = models.DecimalField(max_digits=15, decimal_places=2, default=0.0)  # Monto inicial
     pending_amount = models.DecimalField(max_digits=15, decimal_places=2, default=0.0)  # Monto pendiente
     daily_return = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)  # Rendimiento diario (%)
     monthly_return = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)  # Rendimiento mensual (%)
-    date_init = models.DateField()  # Fecha de inicio
+    date_init = models.DateField(auto_now_add=True)  # Fecha de inicio
     
     # Campos adicionales que podrían ser útiles
     commission_balance = models.DecimalField(max_digits=15, decimal_places=2, default=0.0)  # Comisiones actuales
@@ -54,6 +54,10 @@ class InvestmentAccount(models.Model):
     #     self.daily_return = self.investment_amount * Decimal('0.005')  
     #     self.monthly_return = self.daily_return * 30  # Aproximación al mes
     #     self.save()
+    
+    def calculate_total_amount(self):
+        self.total_amount = self.investment_amount + self.commission_balance
+        self.save()
 
     def apply_daily_profit(self):
         """Añade la ganancia diaria al balance"""

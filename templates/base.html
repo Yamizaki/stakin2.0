@@ -46,16 +46,16 @@
       <div>
         <h1>Criptomonedas</h1>
         {% for crypto in data_crypto %}
-          <div class="" style="">
+          <div class="" style="margin: 15px;">
             <div style="display: flex; align-items: center; ">
               <img src="{{ crypto.image }}" style="width: 20%; height: 20%; margin-right: 10px;" />
               <div style="display: flex; gap:10px; align-items: center; justify-content: space-between;">
                 <div>
                   <p style="font-weight: 800; font-size: 16px;">{{ crypto.name }}</p>
                   {% if crypto.price_change_percentage_24h > 0 %}
-                    <p style="font-size: 13px; line-height:0px; color:greenyellow">{{ crypto.price_change_percentage_24h }}%</p>
+                    <p style="font-size: 13px;  color:greenyellow">{{ crypto.price_change_percentage_24h }}%</p>
                   {% else %}
-                    <p style="font-size: 13px; line-height:0px; color: red;">{{ crypto.price_change_percentage_24h }}%</p>
+                    <p style="font-size: 13px; color:rgb(238, 94, 94) ;">{{ crypto.price_change_percentage_24h }}%</p>
                   {% endif %}
                 </div>
 
@@ -69,7 +69,7 @@
       <div>
         <h1>Mercado Acciones</h1>
         {% for stock in data_stocks %}
-          <div class="">
+          <div style="margin: 15px;">
             <div style="display: flex; align-items: center; gap:10px">
               <img src="{{ stock.LogoURL }}" style="width: 20%; height: 20%;" />
               <div style="display: flex; gap:25px; align-items: center;">

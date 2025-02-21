@@ -16,7 +16,7 @@ def increment_account_balance():
         for account in accounts:        
             # Supongamos que `initial_amount` representa los fondos pendientes
             account.apply_daily_profit()
-
+            account.calculate_total_amount()
             # Creamos un registro de transaccion 
             InvestmentTransaction.objects.create(investment_account=account, commission_balance=account.commission_balance, transaction_type="payment_return", amount=account.daily_return, date=now)
     except Exception as e:
