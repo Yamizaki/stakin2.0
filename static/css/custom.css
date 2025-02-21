@@ -271,3 +271,14 @@ main {
   background-color: rgba(0, 0, 0, 0.178);
   z-index: 1;
 }
+.close-modal{
+  color: #0a0f1f;
+  background: linear-gradient(180deg, #ff7300, #ff0000);
+  padding: 5px 10px; 
+  border-radius: 100%; 
+  position: absolute; 
+  top: 20px; 
+  right: 20px;
+  cursor: pointer;
+  font-weight: 600;
+}

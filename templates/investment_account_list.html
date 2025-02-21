@@ -93,6 +93,7 @@
 
     <div id="modal-add-account" class="hidden">
       <form method="post" action="{% url 'account-create' %}" class="modal-add-account-form">
+        <a id="close-form-add" class="close-modal">x</a>
         {% csrf_token %}
         <label for="account_name">Nombre de la cuenta:</label>
         <input type="text" id="account_name" name="account_name" required />
@@ -106,6 +107,10 @@
     const modalAddAcc = document.getElementById('modal-add-account')
     addAccount.addEventListener('click', () => {
       modalAddAcc.classList.remove('hidden')
+    })
+    const modalAddClose = document.getElementById('close-form-add')
+    modalAddClose.addEventListener('click', ()=>{
+      modalAddAcc.classList.add('hidden')
     })
   </script>
 {% endblock %}
