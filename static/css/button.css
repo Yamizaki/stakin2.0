@@ -5,14 +5,12 @@ button {
     font-family: inherit;
     cursor: pointer;
     font-weight: 500;
-    font-size: 17px;
     color: white;
     background: #ad5389;
     background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
     border: none;
     letter-spacing: 0.05em;
     border-radius: 16px;
-    padding: 5px 10px;
   }
   
   button svg {
@@ -38,7 +36,6 @@ button {
     font-family: inherit;
     cursor: pointer;
     font-weight: 500;
-    font-size: 17px;
     color: white;
     background: #ad5389;
     background: linear-gradient(to right, #8c1616, #c02942, #ff5733);
@@ -46,7 +43,6 @@ button {
     border: none;
     letter-spacing: 0.05em;
     border-radius: 16px;
-    padding: 0px 10px;
   }
   
   .cancel svg {

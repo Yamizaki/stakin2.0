@@ -91,24 +91,24 @@ DATABASE_URL = os.getenv(
 # Parsear la URL de la base de datos
 db_info = urlparse(DATABASE_URL)
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': db_info.path[1:],  # Nombre de la base de datos
-        'USER': db_info.username,   # Usuario
-        'PASSWORD': db_info.password,  # Contraseña
-        'HOST': db_info.hostname,   # Host (en este caso, el servicio `db` en Docker)
-        'PORT': db_info.port or 5432,  # Puerto
-    }
-}
-
 # DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#         "OPTIONS": {},
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': db_info.path[1:],  # Nombre de la base de datos
+#         'USER': db_info.username,   # Usuario
+#         'PASSWORD': db_info.password,  # Contraseña
+#         'HOST': db_info.hostname,   # Host (en este caso, el servicio `db` en Docker)
+#         'PORT': db_info.port or 5432,  # Puerto
 #     }
 # }
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+        "OPTIONS": {},
+    }
+}
 
 
 # Password validation

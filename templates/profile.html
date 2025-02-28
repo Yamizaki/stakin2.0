@@ -1,0 +1,373 @@
+{% extends 'base.html' %}
+{% block content %}
+  <style>
+    :root{
+        --shadow:0px 0px 35px rgba(154, 193, 196, 0.8);
+    }
+    .profile-card {
+      background: linear-gradient(145deg, #0a0a1a, #0f0f23);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-width: 400px;
+      margin: auto;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .profile-card:hover {
+      box-shadow: var(--shadow);
+    }
+    
+    .profile-img {
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      border: 4px solid #0078d7;
+      transition: transform 0.3s ease;
+    }
+    
+    .profile-img:hover {
+      transform: scale(1.1);
+    }
+    
+    .name {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-top: 15px;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #0078d7, #00a8e8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .bio {
+      font-size: 1rem;
+      color: #a8a8a8;
+      margin-top: 10px;
+    }
+    
+    .info {
+      margin-top: 15px;
+      font-size: 0.9rem;
+      color: #888;
+    }
+    
+    .info i {
+      color: #0078d7;
+      margin-right: 5px;
+    }
+    
+    .social-links {
+      margin-top: 15px;
+    }
+    
+    .social-links a {
+      color: #0078d7;
+      font-size: 1.5rem;
+      margin: 0 10px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: #00a8e8;
+      transform: scale(1.2);
+    }
+    
+    /* Animación de holograma */
+    .holo-effect {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      border-radius: 15px;
+      background: rgba(0, 120, 215, 0.1);
+    }
+    
+    section {
+      margin: 25px;
+      padding: 10px;
+    }
+    
+    .dashboard-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .card-futuristic {
+      background: linear-gradient(145deg, #0a0a1a, #0f0f23);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 250px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card-futuristic:hover {
+      transform: scale(1.05);
+      box-shadow: var(--shadow);
+    }
+    
+    .icon-container {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #0078d7;
+    }
+    
+    .card-title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #0078d7, #00a8e8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .card-value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #00a8e8;
+    }
+    
+    .holo-effect {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      border-radius: 15px;
+      background: rgba(0, 120, 215, 0.1);
+      animation: holoMove 3s infinite linear;
+    }
+    
+    /* Estilo especial para el diamante */
+    .diamond {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(45deg, #0078d7, #00a8e8);
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      animation: glow 2s infinite alternate;
+    }
+    
+ 
+    
+    .graph-container {
+      background: linear-gradient(145deg, #0a0a1a, #0f0f23);
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 600px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .graph-container:hover {
+    box-shadow: var(--shadow) ;
+    }
+    
+    .graph-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #0078d7, #00a8e8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .graph {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      border-left: 2px solid #0078d7;
+      border-bottom: 2px solid #0078d7;
+    }
+    
+    .graph-line {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      stroke: #00a8e8;
+      stroke-width: 3;
+      fill: none;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: drawLine 3s forwards;
+    }
+    
+    .graph-points {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .graph-point {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #00a8e8;
+      border-radius: 50%;
+      transform: translate(-50%, 50%);
+    }
+    
+    .graph-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      color: #a8a8a8;
+      font-size: 0.9rem;
+    }
+    
+    .graph-labels p {
+      flex: 1;
+      text-align: center;
+    }
+    
+    .graph-legend {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      color: #a8a8a8;
+      font-size: 0.9rem;
+    }
+    
+    .graph-legend p {
+      margin: 0 15px;
+    }
+    
+    .graph-legend p::before {
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+    
+    .graph-legend .investment::before {
+      background: #0078d7;
+    }
+    
+    .graph-legend .profit::before {
+      background: #00a8e8;
+    }
+    
+    @keyframes drawLine {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+    
+    /* Efecto holográfico */
+    .holo-effect {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      border-radius: 15px;
+      background: rgba(0, 120, 215, 0.1);
+    }
+  </style>
+
+  <!-- Iconos de Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" />
+  <div style="display: flex; justify-content: center; padding-top: 15px;">
+    <section class="d-flex justify-content-center align-items-center vh-100">
+      <div class="profile-card">
+        <div class="holo-effect"></div>
+        <img class="profile-img" src="https://picsum.photos/200" alt="Foto del usuario" />
+        <div class="name">Nombre del Usuario</div>
+        <div class="bio">Explorador del ciberespacio, amante de la IA y creador del futuro digital.</div>
+
+        <div class="info">
+          <p>
+            <i class="bi bi-geo-alt"></i>Ciudad, País
+          </p>
+          <p>
+            <i class="bi bi-envelope"></i>correo@ejemplo.com
+          </p>
+        </div>
+
+        <div class="social-links">
+          <a href="#" class="bi bi-github"></a>
+          <a href="#" class="bi bi-twitter"></a>
+          <a href="#" class="bi bi-linkedin"></a>
+        </div>
+      </div>
+    </section>
+
+    <div class="graph-container">
+      <div class="holo-effect"></div>
+      <div class="graph-title">Tiempo de Inversión vs Ganancia</div>
+      <div class="graph">
+        <!-- Línea del gráfico -->
+        <svg class="graph-line">
+          <polyline points="50,250 150,150 250,200 350,100 450,50" />
+        </svg>
+        <!-- Puntos del gráfico -->
+        <div class="graph-points">
+          <div class="graph-point" style="left: 10%; bottom: 50%;"></div>
+          <div class="graph-point" style="left: 30%; bottom: 30%;"></div>
+          <div class="graph-point" style="left: 50%; bottom: 40%;"></div>
+          <div class="graph-point" style="left: 70%; bottom: 20%;"></div>
+          <div class="graph-point" style="left: 90%; bottom: 10%;"></div>
+        </div>
+      </div>
+      <!-- Etiquetas del eje X -->
+      <div class="graph-labels">
+        <p>1 Mes</p>
+        <p>3 Meses</p>
+        <p>6 Meses</p>
+        <p>1 Año</p>
+        <p>2 Años</p>
+      </div>
+      <!-- Leyenda del gráfico -->
+      <div class="graph-legend">
+        <p class="investment">Inversión</p>
+        <p class="profit">Ganancia</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="dashboard-container">
+    <!-- Tarjeta de tiempo en la plataforma -->
+    <div class="card-futuristic">
+      <div class="holo-effect"></div>
+      <div class="icon-container">
+        <i class="bi bi-clock"></i>
+      </div>
+      <div class="card-title">Tiempo en la Plataforma</div>
+      <div class="card-value">2 años</div>
+    </div>
+
+    <!-- Tarjeta de rango con diamante -->
+    <div class="card-futuristic">
+      <div class="holo-effect"></div>
+      <div class="diamond">
+        <i class="bi bi-gem" style="color: white; font-size: 2rem;"></i>
+      </div>
+      <div class="card-title">Rango: Diamante</div>
+      <div class="card-value">Nivel Élite</div>
+    </div>
+
+    <!-- Tarjeta de puntos acumulados -->
+    <div class="card-futuristic">
+      <div class="holo-effect"></div>
+      <div class="icon-container">
+        <i class="bi bi-stars"></i>
+      </div>
+      <div class="card-title">Puntos Acumulados</div>
+      <div class="card-value">12,500</div>
+    </div>
+  </section>
+{% endblock %}

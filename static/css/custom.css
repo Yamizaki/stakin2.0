@@ -37,12 +37,12 @@ body {
 }
 main{
   overflow-y: scroll;
-  max-height: 80vh;
-  min-height: 80vh;
+  max-height: 90vh;
+  min-height: 90vh;
   margin: 20px 40px;
 }
 aside {
-  min-height: 90vh;
+  min-height: 80vh;
   width: 15vw;
   border-radius: 15px;
 }
@@ -52,6 +52,16 @@ aside {
   width: 15vw;
 }
 
+a{
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+li p{
+  font-weight: 800;
+  font-size: 16px;
+  text-align: center;
+}
 aside h1 {
   color: var(--color-secondary);
   text-align: center;
@@ -63,7 +73,7 @@ ul {
 li {
   list-style-type: none;
   transition: all 0.8s ease;
-  padding: 15px 50px 15px 50px;
+  padding: 15px 20px 15px 20px;
 }
 
 li:hover {
