@@ -1,16 +1,15 @@
 {% extends 'base.html' %} {% load static %} {% block css_special %}
-  <link rel="stylesheet" href="{% static 'css/uiverse.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/button.css' %}" />
+<link rel="stylesheet" href="{% static 'css/button.css' %}" />
+<link rel="stylesheet" href="{% static 'css/uiverse.css' %}" />
 {% endblock %} {% block content %}
   <section style="position: relative;">
-      
     {% if accounts %}
-    <button class="agregar-cuenta add-acc-abso" style="padding: 10px 10px; border-radius: 100%;" id="add-account">
-      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-circle-plus">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path d="M4.929 4.929a10 10 0 1 1 14.141 14.141a10 10 0 0 1 -14.14 -14.14zm8.071 4.071a1 1 0 1 0 -2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 1 0 2 0v-2h2a1 1 0 1 0 0 -2h-2v-2z" />
-      </svg>
-    </button>
+      <button class="agregar-cuenta add-acc-abso" style="padding: 10px 10px; border-radius: 100%;" id="add-account">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-circle-plus">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M4.929 4.929a10 10 0 1 1 14.141 14.141a10 10 0 0 1 -14.14 -14.14zm8.071 4.071a1 1 0 1 0 -2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 1 0 2 0v-2h2a1 1 0 1 0 0 -2h-2v-2z" />
+        </svg>
+      </button>
       {% for account in accounts %}
         <div style="margin: 20px 5px;">
           <div class="container-accounts">
@@ -52,7 +51,7 @@
             </div>
             <!-- From Uiverse.io by adamgiebl -->
             <div style="display: flex; justify-content: center; gap: 25px; margin: 20px">
-              <button>
+              <button id="btn-payment-{{ forloop.counter }}" class="btn-payment">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-credit-card-pay">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                   <path d="M12 19h-6a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v4.5" />
@@ -76,6 +75,32 @@
             </div>
           </div>
         </div>
+
+        <div id="form-payment-{{ forloop.counter }}" class="hidden form-payment">
+          <form action="">
+            <button>
+              <div class="container-btn-payment">
+                <div class="left-side-btn-payment">
+                  <div class="card-btn-payment">
+                    <div class="card-line-btn-payment"></div>
+                    <div class="buttons-btn-payment"></div>
+                  </div>
+                  <div class="post-btn-payment">
+                    <div class="post-line-btn-payment"></div>
+                    <div class="screen-btn-payment">
+                      <div class="dollar-btn-payment">$</div>
+                    </div>
+                    <div class="numbers-btn-payment"></div>
+                    <div class="numbers-line2-btn-payment"></div>
+                  </div>
+                </div>
+                <div class="right-side-btn-payment">
+                  <div class="new-btn-payment">Pagar ya!</div>
+                </div>
+              </div>
+            </button>
+          </form>
+        </div>
       {% endfor %}
     {% else %}
       <!-- From Uiverse.io by mrhyddenn -->
@@ -97,12 +122,23 @@
         {% csrf_token %}
         <label for="account_name">Nombre de la cuenta:</label>
         <input type="text" id="account_name" name="account_name" required />
-        <button type="submit" >Crear Cuenta</button>
-    </form>
+        <button type="submit">Crear Cuenta</button>
+      </form>
     </div>
   </section>
 
   <script>
+    document.querySelectorAll('.btn-payment').forEach((boton) => {
+      boton.addEventListener('click', () => {
+        const id = boton.id.replace('btn-payment-', '') // Extrae el identificador único
+        const formPayment = document.getElementById('form-payment-' + id)
+        formPayment.classList.remove('hidden')
+        // Aquí puedes agregar la funcionalidad específica para cada botón
+      })
+    })
+  </script>
+  <script>
+    {% comment %} script for add acc {% endcomment %}
     const addAccount = document.getElementById('add-account')
     const modalAddAcc = document.getElementById('modal-add-account')
     addAccount.addEventListener('click', () => {

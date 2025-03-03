@@ -2,7 +2,7 @@
 {% block content %}
   <style>
     :root{
-        --shadow:0px 0px 35px rgba(154, 193, 196, 0.8);
+        --shadow:0px 0px 15px rgba(154, 193, 196, 0.5);
     }
     .profile-card {
       background: linear-gradient(145deg, #0a0a1a, #0f0f23);
@@ -285,16 +285,21 @@
     <section class="d-flex justify-content-center align-items-center vh-100">
       <div class="profile-card">
         <div class="holo-effect"></div>
-        <img class="profile-img" src="https://picsum.photos/200" alt="Foto del usuario" />
-        <div class="name">Nombre del Usuario</div>
-        <div class="bio">Explorador del ciberespacio, amante de la IA y creador del futuro digital.</div>
+        <img class="profile-img" src="{{current_user.profile.profile_picture.url}}" alt="Foto del usuario" />
+        <div class="name">{{current_user.first_name}} {{current_user.last_name}} </div>
+        {% if current_user.profile.bio %}
+          <div class="bio">{{current_user.profile.bio}}</div>
+        {% else %}
+        <div class="bio">Sin descripcion disponible...</div>
+        {% endif %}
+
 
         <div class="info">
           <p>
-            <i class="bi bi-geo-alt"></i>Ciudad, País
+            <i class="bi bi-geo-alt"></i>{{current_user.profile.address}}, {{current_user.profile.country}}
           </p>
           <p>
-            <i class="bi bi-envelope"></i>correo@ejemplo.com
+            <i class="bi bi-envelope"></i> {{current_user.email}}
           </p>
         </div>
 
@@ -347,7 +352,16 @@
         <i class="bi bi-clock"></i>
       </div>
       <div class="card-title">Tiempo en la Plataforma</div>
-      <div class="card-value">2 años</div>
+      <div class="card-value">
+      {% if user_time.years != 0 %}
+        <p> {{ user_time.years }} años, {{ user_time.months}} meses y {{ user_time.days}} días</p>
+      {% elif user_time.months != 0 %}
+      <p> {{ user_time.months}} meses y {{ user_time.days}} días</p>
+      {% else %}
+      <p> {{ user_time.days}} días</p>
+      {% endif %}
+
+      </div>
     </div>
 
     <!-- Tarjeta de rango con diamante -->

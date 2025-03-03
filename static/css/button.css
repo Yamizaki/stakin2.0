@@ -6,7 +6,6 @@ button {
     cursor: pointer;
     font-weight: 500;
     color: white;
-    background: #ad5389;
     background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
     border: none;
     letter-spacing: 0.05em;
@@ -37,8 +36,7 @@ button {
     cursor: pointer;
     font-weight: 500;
     color: white;
-    background: #ad5389;
-    background: linear-gradient(to right, #8c1616, #c02942, #ff5733);
+    background: linear-gradient(to right, #9e3232, #c02942, #ff5733);
 
     border: none;
     letter-spacing: 0.05em;
